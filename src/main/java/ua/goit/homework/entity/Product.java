@@ -33,7 +33,7 @@ public class Product implements BaseEntity<UUID>{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "producer_id", nullable = false)
-    private Producer producer;
+    private Manufacturer producer;
 
 
 

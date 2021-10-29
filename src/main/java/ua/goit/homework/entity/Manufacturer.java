@@ -1,22 +1,20 @@
 package ua.goit.homework.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
-@Table(name = "producer")
-public class Producer implements BaseEntity<UUID> {
+@Table(name = "manufacturer")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Manufacturer implements BaseEntity<UUID> {
 
     @Id
     @Column(name = "id")

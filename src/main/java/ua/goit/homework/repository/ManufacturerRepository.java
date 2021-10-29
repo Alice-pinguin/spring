@@ -2,9 +2,9 @@ package ua.goit.homework.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ua.goit.homework.entity.Producer;
+import ua.goit.homework.entity.Manufacturer;
 import java.util.UUID;
 
 @Repository
-public interface ProducerRepository extends CrudRepository<Producer, UUID> {
+public interface ManufacturerRepository extends CrudRepository<Manufacturer, UUID> {
 }
