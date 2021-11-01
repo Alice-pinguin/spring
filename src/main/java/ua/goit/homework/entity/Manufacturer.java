@@ -25,6 +25,6 @@ public class Manufacturer implements BaseEntity<UUID> {
     @Column(name = "name", nullable = false, unique = true, length = 100)
     private String name;
 
-    @OneToMany(mappedBy="producer", fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="manufacturer", fetch = FetchType.LAZY, cascade= CascadeType.ALL)
     private Set<Product> products;
 }

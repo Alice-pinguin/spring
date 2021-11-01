@@ -1,9 +1,6 @@
 package ua.goit.homework.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,8 +12,7 @@ import java.util.UUID;
 @Table (name = "product")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Product implements BaseEntity<UUID>{
 
     @Id
@@ -31,9 +27,9 @@ public class Product implements BaseEntity<UUID>{
     @Column(name = "price", nullable = false, length = 20)
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "producer_id", nullable = false)
-    private Manufacturer producer;
+    @ManyToOne()
+    @JoinColumn(name = "manufacturer_id", nullable = false)
+    private Manufacturer manufacturer;
 
 
 
