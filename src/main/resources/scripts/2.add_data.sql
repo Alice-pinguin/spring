@@ -12,7 +12,7 @@ INSERT INTO product VALUES
 (5, 'Witcher', 13000,3);
 
 INSERT INTO user VALUES
-(1, 'alex3000@gmail.com', 'eufyiuny','Alex', 'Syhoy', 'user', 'active'),
+(1, 'alex3000@gmail.com', 'eufyiuny','Alex', 'Syhoy', 'ROlE_USER', 'ACTIVE'),
 (2, 'vasylshevich@gmail.com','fwf5454f', 'Vasyl', 'Shevich', 'user', 'active'),
-(3, 'ahfaifh@gmail.com', 'dhddjd', 'Misha', 'Esenin', 'admin', 'active');
+(3, 'ahfaifh@gmail.com', '1225054005', 'Misha', 'Esenin', 'admin', 'active');
 

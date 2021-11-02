@@ -32,7 +32,4 @@ public class Product implements BaseEntity<UUID>{
     private Manufacturer manufacturer;
 
 
-
-
-
 }

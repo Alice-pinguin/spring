@@ -1,6 +1,6 @@
 package ua.goit.homework.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,20 +13,16 @@ import ua.goit.homework.service.ManufacturerService;
 import java.util.Optional;
 import java.util.UUID;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping(path = "/manufacturer")
 public class ManufacturerController {
 
     private final ManufacturerService service;
 
-    @Autowired
-    public ManufacturerController(ManufacturerService service) {
-        this.service = service;
-    }
-
     @GetMapping(path = "/findAllManufacturers")
     public ModelAndView showAllManufacturersPage(ModelAndView model) {
-        Iterable<Manufacturer> manufacturers = service.getRepository ().findAll ();
+        Iterable<Manufacturer> manufacturers = service.findAll();
         model.addObject("manufacturers", manufacturers);
         model.setViewName("findAllManufacturers");
         return model;
@@ -34,28 +30,28 @@ public class ManufacturerController {
 
     @GetMapping(path = "/findManufacturerById")
     public ModelAndView showManufacturerById(@RequestParam(name = "id") UUID id, ModelAndView model) {
-        Optional<Manufacturer> manufacturer = service.getRepository ().findById (id);
-        model.addObject("manufacturer", manufacturer.get ());
+        Optional<Manufacturer> manufacturer = service.findById(id);
+        model.addObject("manufacturer", manufacturer.get());
         model.setViewName("findManufacturerById");
         return model;
     }
 
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/form/update")
-    public String showUpdateManufacturerPage(@RequestParam(name = "id")UUID id, Model model) {
-        Optional<Manufacturer> manufacturer = service.getRepository ().findById (id);
+    public String showUpdateManufacturerPage(@RequestParam(name = "id") UUID id, Model model) {
+        Optional<Manufacturer> manufacturer = service.findById(id);
         model.addAttribute("manufacturer", manufacturer);
         return "updateManufacturerForm";
     }
 
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(path = "/updateManufacturer")
     public RedirectView updateManufacturer(@ModelAttribute("manufacturer") Manufacturer manufacturer) {
-        service.getRepository().save (manufacturer);
+        service.save(manufacturer);
         return new RedirectView("/manufacturer/findAllManufacturers");
     }
 
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/form/add")
     public String showAddFormManufacturerPage(Model model) {
         return "addManufacturerForm";
@@ -64,15 +60,14 @@ public class ManufacturerController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(path = "/addManufacturer")
     public RedirectView addManufacturer(@ModelAttribute("manufacturer") Manufacturer manufacturer) {
-        service.getRepository().save (manufacturer);
+        service.save(manufacturer);
         return new RedirectView("/manufacturers/findAllManufacturers");
     }
 
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/delete")
     public RedirectView delete(@RequestParam("id") UUID id) {
-        Optional<Manufacturer> manufacturer = service.getRepository ().findById (id);
-        service.getRepository ().delete (manufacturer.get ());
+        service.deleteById(id);
         return new RedirectView("/manufacturers/findAllManufacturers");
     }
 

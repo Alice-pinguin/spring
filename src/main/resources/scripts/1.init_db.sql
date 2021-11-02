@@ -20,8 +20,8 @@ CREATE TABLE user (
                           password varchar(15) NOT NULL,
                           first_name varchar(15) NOT NULL,
                           last_name varchar(20) NOT NULL,
-                          user_role varchar(5)NOT NULL,
-                          user_status varchar(10) NOT NULL,
+                          user_role varchar(5),
+                          user_status varchar(10),
                           PRIMARY KEY (id));
 
 
