@@ -37,11 +37,11 @@ public class UserController {
         if (result.hasErrors()) {
             return "registration";
         }
-        userService.register (user);
+        userService.saveUser (user);
         return "redirect:/login";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/findAllUsers")
     public ModelAndView showAllUsersPage(ModelAndView model) {
         Iterable<User> users = userService.getRepository ().findAll ();
@@ -50,7 +50,7 @@ public class UserController {
         return model;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/delete")
     public RedirectView delete(@RequestParam("id") UUID uuid) {
         Optional<User> user = userService.getRepository ().findById (uuid);
@@ -59,7 +59,7 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/findUserById")
     public ModelAndView findUserById(@RequestParam("id") UUID uuid, ModelAndView model) {
         Optional<User> user = userService.getRepository ().findById (uuid);
@@ -68,7 +68,7 @@ public class UserController {
         return model;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/form/save")
     public String showUpdateUserForm(@RequestParam("id") UUID uuid, Model model) {
         Optional<User> user = userService.getRepository ().findById (uuid);
@@ -76,10 +76,10 @@ public class UserController {
         return "updateUserForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @PostMapping(path = "/form/save")
     public RedirectView save(User user) {
-        userService.save (user);
+        userService.saveUser (user);
         return new RedirectView ("/user/findAllUsers");
     }
 

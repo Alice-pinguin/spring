@@ -40,7 +40,7 @@ public class ManufacturerController {
         return model;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/form/update")
     public String showUpdateManufacturerPage(@RequestParam(name = "id")UUID id, Model model) {
         Optional<Manufacturer> manufacturer = service.getRepository ().findById (id);
@@ -48,14 +48,14 @@ public class ManufacturerController {
         return "updateManufacturerForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @PostMapping(path = "/updateManufacturer")
     public RedirectView updateManufacturer(@ModelAttribute("manufacturer") Manufacturer manufacturer) {
         service.getRepository().save (manufacturer);
         return new RedirectView("/manufacturer/findAllManufacturers");
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/form/add")
     public String showAddFormManufacturerPage(Model model) {
         return "addManufacturerForm";
@@ -68,7 +68,7 @@ public class ManufacturerController {
         return new RedirectView("/manufacturers/findAllManufacturers");
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/delete")
     public RedirectView delete(@RequestParam("id") UUID id) {
         Optional<Manufacturer> manufacturer = service.getRepository ().findById (id);

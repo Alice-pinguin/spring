@@ -51,9 +51,22 @@
             </div>
         </spring:bind>
 
+        <spring:bind path="userStatus">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="userStatus" class="form-control" required="required"
+                            placeholder="Status"></form:input>
+                <form:errors path="userStatus"></form:errors>
+            </div>
+        </spring:bind>
+        <spring:bind path="userRole">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="userRole" class="form-control" required="required"
+                            placeholder="Role"></form:input>
+                <form:errors path="userRole"></form:errors>
+            </div>
+        </spring:bind>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form:form>
 </div>
-
 </body>
 </html>

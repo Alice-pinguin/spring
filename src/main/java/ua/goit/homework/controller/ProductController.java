@@ -55,20 +55,20 @@ public class ProductController {
         return model;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/form/add")
     public String showAddProductPage(Model model) {
         return "addProduct";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @PostMapping(path = "/addProduct")
     public RedirectView addProduct(@ModelAttribute("product") Product product) {
         service.getRepository ().save(product);
         return new RedirectView("/products/findAllProducts");
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @GetMapping(path = "/form/update")
     public String showUpdateProductPage(@RequestParam("id") UUID uuid, Model model) {
         Optional<Product> products = service.getRepository ().findById (uuid);
@@ -76,7 +76,7 @@ public class ProductController {
         return "updateProductForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('admin')")
     @PostMapping(path = "/update")
     public RedirectView updateProduct(@ModelAttribute("product") Product product) {
         service.getRepository().save (product);

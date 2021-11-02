@@ -20,16 +20,7 @@ public class UserService extends BaseService<User, UUID> {
         return repository;
     }
 
-    public void register(User user) {
-        if (repository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException ("Account with provided email already exists");
-        }
-        user.setUserRole(Role.ROLE_USER);
-        user.setPassword(encoder.encode(user.getPassword()));
-        repository.save(user);
-    }
-
-    public User save(User user) {
+    public User saveUser(User user) {
         if (repository.findByEmail(user.getEmail()).isPresent()) {
             throw new RuntimeException (String.format("User with specified email [%s] already exists",
                     user.getEmail()));

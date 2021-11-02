@@ -27,7 +27,7 @@ public class User  implements BaseEntity<UUID> {
     private String email;
 
     @NotBlank(message = "Password can't be empty")
-    @Column(name = "password", nullable = false, length = 15)
+    @Column(name = "password", nullable = false, length = 20)
     private String password;
 
     @NotBlank(message = "First name can't be empty")
