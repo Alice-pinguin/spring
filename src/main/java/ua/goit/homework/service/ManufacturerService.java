@@ -6,9 +6,9 @@ import ua.goit.homework.entity.Manufacturer;
 import java.util.UUID;
 
 @Service
-public class ManufacturerService extends BaseService<Manufacturer, UUID> {
+public class ManufacturerService extends BaseService<Manufacturer, Long> {
 
-    public ManufacturerService(CrudRepository<Manufacturer, UUID> repository) {
+    public ManufacturerService(CrudRepository<Manufacturer, Long> repository) {
         super(repository);
     }
 }

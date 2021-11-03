@@ -6,18 +6,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Entity
 @Table (name = "product")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Product implements BaseEntity<UUID>{
+public class Product implements BaseEntity<Long>{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
     @NotBlank(message = "Name can't be empty")
     @Size(min = 3, max = 100, message = "Name must be in range of 3-100 symbols")

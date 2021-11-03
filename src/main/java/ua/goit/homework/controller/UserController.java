@@ -43,15 +43,15 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/delete")
-    public RedirectView delete(@RequestParam("id") UUID uuid) {
-        userService.deleteById(uuid);
+    public RedirectView delete(@RequestParam("id") Long id) {
+        userService.deleteById(id);
         return new RedirectView("/user/findAllUsers");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/findUserById")
-    public ModelAndView findUserById(@RequestParam("id") UUID uuid, ModelAndView model) {
-        Optional<User> user = userService.findById(uuid);
+    public ModelAndView findUserById(@RequestParam("id") Long id, ModelAndView model) {
+        Optional<User> user = userService.findById(id);
         model.addObject("user", user);
         model.setViewName("findUserById");
         return model;
@@ -59,8 +59,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/form/save")
-    public String showUpdateUserForm(@RequestParam("id") UUID uuid, Model model) {
-        Optional<User> user = userService.findById(uuid);
+    public String showUpdateUserForm(@RequestParam("id") Long id, Model model) {
+        Optional<User> user = userService.findById(id);
         model.addAttribute("user", user);
         return "updateUserForm";
     }

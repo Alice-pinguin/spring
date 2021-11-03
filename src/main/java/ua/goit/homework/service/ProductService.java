@@ -6,9 +6,9 @@ import ua.goit.homework.entity.Product;
 import java.util.UUID;
 
 @Service
-public class ProductService extends BaseService<Product, UUID> {
+public class ProductService extends BaseService<Product, Long> {
 
-    public ProductService(CrudRepository<Product, UUID> repository) {
+    public ProductService(CrudRepository<Product, Long> repository) {
         super(repository);
     }
 

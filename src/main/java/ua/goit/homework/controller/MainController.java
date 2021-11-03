@@ -29,6 +29,7 @@ public class MainController {
             model.addAttribute("message", "You have been logged out");
         }
         return "login";
+
     }
 
 }

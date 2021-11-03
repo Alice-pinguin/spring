@@ -24,9 +24,9 @@ public class ProductController {
     private final ManufacturerService manufacturerService;
     
     @GetMapping(path = "/findProductByManufacturerId")
-    public ModelAndView showProductsByManufacturerIdPage(@RequestParam(name = "id") UUID id, ModelAndView model) {
+    public ModelAndView showProductsByManufacturerIdPage(@RequestParam(name = "id") Long id, ModelAndView model) {
         Optional<Product> product = service.findById(id);
-        UUID manufacturerDTO = product.get().getManufacturer().getId();
+        Long manufacturerDTO = product.get().getManufacturer().getId();
         //Optional<Manufacturer> manufacturer = manufacturerService.findById(manufacturerDTO);
         model.addObject("products", product);
         model.addObject("manufacturer", manufacturerDTO);
@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @GetMapping(path = "/findProductById")
-    public ModelAndView showProductById(@RequestParam(name = "id") UUID id, ModelAndView model) {
+    public ModelAndView showProductById(@RequestParam(name = "id") Long id, ModelAndView model) {
         Optional<Product> product = service.findById(id);
         model.addObject("product", product);
         model.setViewName("findProductById");
@@ -65,8 +65,8 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/form/update")
-    public String showUpdateProductPage(@RequestParam("id") UUID uuid, Model model) {
-        Optional<Product> products = service.findById(uuid);
+    public String showUpdateProductPage(@RequestParam("id") Long id, Model model) {
+        Optional<Product> products = service.findById(id);
         model.addAttribute("product", products);
         return "updateProductForm";
     }

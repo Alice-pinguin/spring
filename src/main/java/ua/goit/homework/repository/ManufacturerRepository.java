@@ -6,5 +6,5 @@ import ua.goit.homework.entity.Manufacturer;
 import java.util.UUID;
 
 @Repository
-public interface ManufacturerRepository extends CrudRepository<Manufacturer, UUID> {
+public interface ManufacturerRepository extends CrudRepository<Manufacturer, Long> {
 }

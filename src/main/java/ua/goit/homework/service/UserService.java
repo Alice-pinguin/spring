@@ -8,7 +8,7 @@ import ua.goit.homework.repository.UserRepository;
 import java.util.UUID;
 
 @Service
-public class UserService extends BaseService<User, UUID> {
+public class UserService extends BaseService<User, Long> {
 
     private final UserRepository repository;
 

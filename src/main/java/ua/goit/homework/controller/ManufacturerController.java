@@ -29,7 +29,7 @@ public class ManufacturerController {
     }
 
     @GetMapping(path = "/findManufacturerById")
-    public ModelAndView showManufacturerById(@RequestParam(name = "id") UUID id, ModelAndView model) {
+    public ModelAndView showManufacturerById(@RequestParam(name = "id") Long id, ModelAndView model) {
         Optional<Manufacturer> manufacturer = service.findById(id);
         model.addObject("manufacturer", manufacturer.get());
         model.setViewName("findManufacturerById");
@@ -38,7 +38,7 @@ public class ManufacturerController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/form/update")
-    public String showUpdateManufacturerPage(@RequestParam(name = "id") UUID id, Model model) {
+    public String showUpdateManufacturerPage(@RequestParam(name = "id") Long id, Model model) {
         Optional<Manufacturer> manufacturer = service.findById(id);
         model.addAttribute("manufacturer", manufacturer);
         return "updateManufacturerForm";
@@ -66,7 +66,7 @@ public class ManufacturerController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/delete")
-    public RedirectView delete(@RequestParam("id") UUID id) {
+    public RedirectView delete(@RequestParam("id") Long id) {
         service.deleteById(id);
         return new RedirectView("/manufacturers/findAllManufacturers");
     }

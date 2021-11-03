@@ -7,18 +7,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "manufacturer")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Manufacturer implements BaseEntity<UUID> {
+public class Manufacturer implements BaseEntity<Long> {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
     @NotBlank
     @Size(min=2, max=100, message = "Name must be in range of 2-100 symbols")

@@ -3,11 +3,9 @@ package ua.goit.homework.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,12 +13,12 @@ import java.util.UUID;
 @Entity
 @Table(name = "user")
 
-public class User  implements BaseEntity<UUID> {
+public class User  implements BaseEntity<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
     @Email(regexp = ".+@.+\\..+", message = "Email must have @ symbol")
     @Column(name = "email", nullable = false, unique = true, length = 30)
