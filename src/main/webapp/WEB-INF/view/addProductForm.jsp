@@ -14,7 +14,7 @@
     <form:form method="post" modelAttribute="product" class="form-signin" action="/product/addProduct">
         Product name: <form:input type="text" path="name" placeholder="Enter product name"/> <br/>
         Product price: <form:input type="number" step="0.01" path="price" placeholder="Enter product price"/> <br/>
-        Manufacturer: <form:select name="manufacturerId" path="manufacturerId">
+        Manufacturer: <form:select name="manufacturerId" path="manufacturer">
                  <c:forEach var="manufacturer" items="${manufacturers}">
                     <form:option value="${manufacturer.id}">${manufacturer.name}</form:option>
                  </c:forEach>

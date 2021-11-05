@@ -10,10 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ua.goit.homework.entity.User;
 import ua.goit.homework.service.UserService;
-
 import javax.validation.Valid;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @RequiredArgsConstructor
 @Controller
@@ -30,7 +29,7 @@ public class UserController {
     @PostMapping("registration")
     public String registrationUser(@Valid User user, BindingResult result) {
         userService.register(user);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

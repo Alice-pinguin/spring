@@ -17,6 +17,7 @@
             <thead>
                 <tr>
                     <th align="left">Product name</th>
+                    <th align="left">Price name</th>
                     <th align="left">Manufacturer name</th>
                     <th colspan="2" align="center">Actions</th>
                 </tr>
@@ -26,14 +27,12 @@
                     <tr>
                         <td>${product.name}</td>
                         <td>${product.price}</td>
+                        <td>${product.manufacturer}</td>
                         <td align="center">
-                            <a href="product/findProductById?id=${product.id}">
-                                <button>Details</button>
-                            </a>
                         </td>
                         <td align="center">
                             <security:authorize access="hasRole('ROLE_ADMIN')">
-                                <a href="product/form/update?id=${product.id}">
+                                <a href="product/form/update/">
                                     <button>Update</button>
                                 </a>
                             </security:authorize>

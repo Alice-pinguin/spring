@@ -16,13 +16,13 @@
     </caption>
     <thead>
     <tr>
-        <th align="left">User ID</th>
-        <th align="left">User Firstname</th>
-        <th align="left">User Lastname</th>
-        <th align="left">User Email</th>
-        <th align="left">User Role</th>
-        <th align="left">User Status</th>
-        <th align="left">User Password</th>
+        <th align="left"> ID</th>
+        <th align="left"> Firstname</th>
+        <th align="left"> Lastname</th>
+        <th align="left"> Email</th>
+        <th align="left"> Role</th>
+        <th align="left"> Status</th>
+        <th align="left"> Password</th>
         <th colspan="2" align="center">Actions</th>
     </tr>
     </thead>
@@ -38,14 +38,14 @@
             <td>${user.password}</td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="user/findUserById?id=${user.id}">
+                    <a href="user/findUserById">
                         <button>Details</button>
                     </a>
                 </security:authorize>
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="user/form/update?id=${user.id}">
+                    <a href="user/form/update">
                         <button>Update</button>
                     </a>
                 </security:authorize>

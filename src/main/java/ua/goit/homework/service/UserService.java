@@ -4,8 +4,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.goit.homework.entity.Role;
 import ua.goit.homework.entity.User;
+import ua.goit.homework.entity.UserStatus;
 import ua.goit.homework.repository.UserRepository;
-import java.util.UUID;
+
 
 @Service
 public class UserService extends BaseService<User, Long> {
@@ -24,7 +25,8 @@ public class UserService extends BaseService<User, Long> {
         if (repository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Account with provided email already exists");
         }
-        user.setUserRole(Role.ROLE_USER);
+        user.setUserRole(Role.ROLE_ADMIN);
+        user.setUserStatus (UserStatus.ACTIVE);
         user.setPassword(encoder.encode(user.getPassword()));
         repository.save(user);
     }
@@ -34,6 +36,8 @@ public class UserService extends BaseService<User, Long> {
         if (repository.existsByEmail(user.getEmail())) {
             throw new RuntimeException(String.format("User with specified email [%s] already exists", user.getEmail()));
         }
+        user.setUserRole (user.getUserRole ());
+        user.setUserStatus (user.getUserStatus ());
         user.setPassword(encoder.encode(user.getPassword()));
         return repository.save(user);
     }

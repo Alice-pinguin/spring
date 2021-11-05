@@ -24,16 +24,17 @@
             <tbody>
                 <c:forEach var="product" items="${products}">
                     <tr>
-                        <td>${product.name}</td>
-                        <td>${manufacturer.name}</td>
+                        <td>${products.get().name}</td>
+                        <td>${products.get().price}</td>
+                        <td>${products.get().manufacturer}</td>
                         <td align="center">
-                            <a href="/product/findProductById?id=${product.id}">
+                            <a href="/product/findProductById">
                                 <button>Details</button>
                             </a>
                         </td>
                         <td align="center">
                             <security:authorize access="hasRole('ROLE_ADMIN')">
-                                <a href="/product/form/update?id=${product.id}">
+                                <a href="/product/form/update">
                                     <button>Update</button>
                                 </a>
                             </security:authorize>

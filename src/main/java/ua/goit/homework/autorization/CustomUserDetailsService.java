@@ -1,5 +1,8 @@
 package ua.goit.homework.autorization;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,14 +14,10 @@ import ua.goit.homework.entity.User;
 import ua.goit.homework.entity.UserStatus;
 import ua.goit.homework.repository.UserRepository;
 
-import java.util.Collection;
-import java.util.Collections;
-
 @RequiredArgsConstructor
 @Service(value = "userServiceDetails")
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private static final long serialVersionUID = 4598337503182422360L;
     private final UserRepository userRepository;
 
     @Override
@@ -27,9 +26,13 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("user with username %s not exists", email)));
         return new UserDetails() {
 
+            @Serial
+            private static final long serialVersionUID = -738565735037431772L;
+
             @Override
             public Collection<? extends GrantedAuthority> getAuthorities() {
-                return Collections.singletonList(new SimpleGrantedAuthority (user.getUserRole().toString()));
+
+                return Collections.singletonList(new SimpleGrantedAuthority(user.getUserRole().toString()));
             }
 
             @Override
@@ -59,7 +62,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
             @Override
             public boolean isEnabled() {
-                return user.getUserStatus()== UserStatus.ACTIVE;
+                return user.getUserStatus()==UserStatus.ACTIVE;
             }
 
         };

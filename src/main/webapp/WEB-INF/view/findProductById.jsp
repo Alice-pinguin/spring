@@ -29,14 +29,14 @@
                     <td>${manufacturer.name}</td>
                     <td align="center">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="product/form/update?id=${product.id}">
+                            <a href="product/form/update">
                                 <button>Update</button>
                             </a>
                         </security:authorize>
                     </td>
                     <td align="center">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="product/delete?id=${product.id}">
+                            <a href="product/delete">
                                 <button>Delete</button>
                             </a>
                         </security:authorize>

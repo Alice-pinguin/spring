@@ -12,6 +12,6 @@ INSERT INTO product VALUES
 (5, 'Witcher', 13000,3);
 
 INSERT INTO user VALUES
-(1, 'alex3000@gmail.com', 'euf55yiuny','Alex', 'Syhoy', 'ROLE_ADMIN', 'ACTIVE'),
-(2, 'vasylshevich@gmail.com','fwf5454f', 'Vasyl', 'Shevich', 'ROLE_USER', 'ACTIVE');
+(1, 'alex3000@gmail.com', '$2a$10$DGrZQ0OaORwx2pjKB8m0ve4IeT1VHKpIdVYcCwymUXQriXIE5h5qm','Alex', 'Syhoy', 'ROLE_ADMIN', 'ACTIVE'),
+(2, 'vasylshevich@gmail.com','$2a$10$GA196vVfpmoyQy9T7RloDeOENfABc/9p11CprRD8i7hB8EbvALpmO', 'Vasyl', 'Shevich', 'ROLE_USER', 'ACTIVE');
 

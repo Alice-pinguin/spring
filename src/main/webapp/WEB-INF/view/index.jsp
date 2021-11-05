@@ -9,5 +9,7 @@
 </head>
 <body>
     <c:import url="/WEB-INF/view/navigation.jsp"/>
+<h4>web application for registration and authorization of users<br>
+    and allowing you to view the list of available products and manufacturers<br></h4>
 </body>
 </html>

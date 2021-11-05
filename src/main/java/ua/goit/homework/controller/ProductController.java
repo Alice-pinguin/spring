@@ -7,13 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import ua.goit.homework.entity.Manufacturer;
 import ua.goit.homework.entity.Product;
 import ua.goit.homework.service.ManufacturerService;
 import ua.goit.homework.service.ProductService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Controller
@@ -27,7 +27,7 @@ public class ProductController {
     public ModelAndView showProductsByManufacturerIdPage(@RequestParam(name = "id") Long id, ModelAndView model) {
         Optional<Product> product = service.findById(id);
         Long manufacturerDTO = product.get().getManufacturer().getId();
-        //Optional<Manufacturer> manufacturer = manufacturerService.findById(manufacturerDTO);
+        Optional<Manufacturer> manufacturer = manufacturerService.findById(manufacturerDTO);
         model.addObject("products", product);
         model.addObject("manufacturer", manufacturerDTO);
         model.setViewName("findProductsByManufacturerId");
@@ -46,14 +46,14 @@ public class ProductController {
     public ModelAndView showFindAllProductsPage(ModelAndView model) {
         List<Product> products = (List<Product>) service.findAll();
         model.addObject("products", products);
-        model.setViewName("findAllProducts");
+        model.setViewName("findAllProduct");
         return model;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/form/add")
     public String showAddProductPage(Model model) {
-        return "addProduct";
+        return "addProductForm";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
