@@ -33,14 +33,14 @@
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="manufacturer/form/update">
+                    <a href="/manufacturer/form/update?id=${manufacturer.id}">
                         <button>Update</button>
                     </a>
                 </security:authorize>
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="manufacturer/delete">
+                    <a href="/manufacturer/delete?id=${manufacturer.id}">
                         <button>Delete</button>
                     </a>
                 </security:authorize>

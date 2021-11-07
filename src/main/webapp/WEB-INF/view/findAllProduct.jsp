@@ -23,22 +23,24 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="product" items="${products}">
-                    <tr>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                        <td>${product.manufacturer}</td>
-                        <td align="center">
-                        </td>
-                        <td align="center">
-                            <security:authorize access="hasRole('ROLE_ADMIN')">
-                                <a href="product/form/update/">
-                                    <button>Update</button>
-                                </a>
-                            </security:authorize>
-                        </td>
-                    </tr>
-                </c:forEach>
+            <c:forEach var="product" items="${products}">
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td align="center">
+                        <a href="/product/findProductById?id=${product.id}">
+                            <button>Details</button>
+                        </a>
+                    </td>
+                    <td align="center">
+                        <security:authorize access="hasRole('ROLE_ADMIN')">
+                            <a href="/product/form/update?id=${product.id}">
+                                <button>Update</button>
+                            </a>
+                        </security:authorize>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </body>

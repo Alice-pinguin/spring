@@ -12,7 +12,7 @@
 <body>
     <c:import url="/WEB-INF/view/navigation.jsp"/>
     <form:form method="post" modelAttribute="manufacturer" class="form-signin" action="manufacturer/updateManufacturer">
-        <form:input type="hidden" path="id" value="${manufacturer.id}"/> <br/>
+        <form:input type="hidden" path="id" value="${manufacturer.get().id}"/> <br/>
         Manufacturer name: <form:input type="text" path="name" placeholder="Enter manufacturer name"/> <br/>
         <button type="submit">Update manufacturer</button>
     </form:form>

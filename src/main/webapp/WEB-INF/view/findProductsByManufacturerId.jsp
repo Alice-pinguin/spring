@@ -28,13 +28,13 @@
                         <td>${products.get().price}</td>
                         <td>${products.get().manufacturer}</td>
                         <td align="center">
-                            <a href="/product/findProductById">
+                            <a href="/product/findProductById?id=${product.id}">
                                 <button>Details</button>
                             </a>
                         </td>
                         <td align="center">
                             <security:authorize access="hasRole('ROLE_ADMIN')">
-                                <a href="/product/form/update">
+                                <a href="/product/form/update?id=${product.id}">
                                     <button>Update</button>
                                 </a>
                             </security:authorize>

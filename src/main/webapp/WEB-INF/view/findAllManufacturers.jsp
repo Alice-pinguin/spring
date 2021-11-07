@@ -25,16 +25,47 @@
     <c:forEach var="manufacturer" items="${manufacturers}">
         <tr>
             <td>${manufacturer.name}</td>
+            <td align="center"><a href="/products/findProductByManufacturerId?id=${manufacturer.id}">
+                <button>Products</button>
+            </a>
+            </td>
+            <td align="center"><a href="/manufacturers/findManufacturerById?id=${manufacturer.id}">
+                <button>Details</button>
+            </a>
+            </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="manufacturer/delete">
-                        <button>Delete</button>
+                    <a href="/manufacturer/form/update?id=${manufacturer.id}">
+                        <button>Update</button>
                     </a>
                 </security:authorize>
             </td>
         </tr>
     </c:forEach>
     </tbody>
+</table>
+</body>
+</html> <c:forEach var="manufacturer" items="${manufacturers}">
+    <tr>
+        <td>${manufacturer.name}</td>
+        <td align="center"><a href="/product/findProductByManufacturerId?id=${manufacturer.id}">
+            <button>Products</button>
+        </a>
+        </td>
+        <td align="center"><a href="/manufacturer/findManufacturerById?id=${manufacturer.id}">
+            <button>Details</button>
+        </a>
+        </td>
+        <td align="center">
+            <security:authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/manufacturer/form/update?id=${manufacturer.id}">
+                    <button>Update</button>
+                </a>
+            </security:authorize>
+        </td>
+    </tr>
+</c:forEach>
+</tbody>
 </table>
 </body>
 </html>
