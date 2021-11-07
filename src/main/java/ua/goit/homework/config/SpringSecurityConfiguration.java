@@ -1,6 +1,7 @@
 package ua.goit.homework.config;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,10 +24,10 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder ();
     }
 
+    @SneakyThrows
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http)  {
         http.csrf ().disable ()
-
                 .authorizeRequests ()
                 .antMatchers ("/user/registration").permitAll ()
                 .anyRequest ().authenticated ()

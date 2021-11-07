@@ -11,9 +11,7 @@
           integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous"/>
 </head>
 <body>
-<sec:authorize access="isAuthenticated()">
-    <% response.sendRedirect("/"); %>
-</sec:authorize>
+
 <div>
     <form method="POST" action="login">
         <h2>Log in with your account</h2>
