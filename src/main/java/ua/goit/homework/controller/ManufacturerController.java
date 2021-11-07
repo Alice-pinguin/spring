@@ -61,14 +61,14 @@ public class ManufacturerController {
     @PostMapping(path = "/addManufacturer")
     public RedirectView addManufacturer(@ModelAttribute("manufacturer") Manufacturer manufacturer) {
         service.save(manufacturer);
-        return new RedirectView("/manufacturers/findAllManufacturers");
+        return new RedirectView("/manufacturer/findAllManufacturers");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(path = "/delete")
     public RedirectView delete(@RequestParam("id") Long id) {
         service.deleteById(id);
-        return new RedirectView("/manufacturers/findAllManufacturers");
+        return new RedirectView("/manufacturer/findAllManufacturers");
     }
 
     @ModelAttribute(name = "manufacturer")

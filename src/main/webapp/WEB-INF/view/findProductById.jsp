@@ -30,14 +30,14 @@
                     <td>${product.get().manufacturer}</td>
                     <td align="center">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="/product/form/update?id=${product.get().id}">
+                            <a href="/product/form/update?id=${product.id}">
                                 <button>Update</button>
                             </a>
                         </security:authorize>
                     </td>
                     <td align="center">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="/product/delete?id=${product.get().id}">
+                            <a href="/product/delete?id=${product.id}">
                                 <button>Delete</button>
                             </a>
                         </security:authorize>

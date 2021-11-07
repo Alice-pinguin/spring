@@ -32,14 +32,14 @@ public class UserService extends BaseService<User, Long> {
     }
 
     @Override
-    public User save(User user) {
+    public void save(User user) {
         if (repository.existsByEmail(user.getEmail())) {
             throw new RuntimeException(String.format("User with specified email [%s] already exists", user.getEmail()));
         }
         user.setUserRole (user.getUserRole ());
         user.setUserStatus (user.getUserStatus ());
         user.setPassword(encoder.encode(user.getPassword()));
-        return repository.save(user);
+        repository.save (user);
     }
 
 }

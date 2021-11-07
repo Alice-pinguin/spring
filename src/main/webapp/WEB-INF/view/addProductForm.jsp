@@ -16,7 +16,7 @@
         Product price: <form:input type="number" step="0.01" path="price" placeholder="Enter product price"/> <br/>
         Manufacturer: <form:select name="manufacturer" path="manufacturer">
                  <c:forEach var="manufacturer" items="${manufacturers}">
-                    <form:option value="${manufacturer.get().id}">${manufacturer.get().name}</form:option>
+                    <form:option value="${manufacturer.id}">${manufacturer.name}</form:option>
                  </c:forEach>
         </form:select>
         <button type="submit">Create Product</button>

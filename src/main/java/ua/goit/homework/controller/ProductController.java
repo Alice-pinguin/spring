@@ -76,7 +76,7 @@ public class ProductController {
     @PostMapping(path = "/update")
     public RedirectView updateProduct(@ModelAttribute("product") Product product) {
         service.save(product);
-        return new RedirectView("/products/findAllProducts");
+        return new RedirectView ("product/findAllProducts");
     }
 
     @ModelAttribute(name = "product")
