@@ -38,14 +38,14 @@
             <td>${user.password}</td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/user/findUserById?id=${user.id}">
+                    <a href="/user/findUserById?id=${user.get().id}">
                         <button>Details</button>
                     </a>
                 </security:authorize>
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/user/form/update?id=${user.id}">
+                    <a href="/user/form/update?id=${user.get().id}">
                         <button>Update</button>
                     </a>
                 </security:authorize>
@@ -53,34 +53,6 @@
         </tr>
     </c:forEach>
     </tbody>
-</table>
-</body>
-</html> <c:forEach var="user" items="${users}">
-    <tr>
-        <td>${user.id}</td>
-        <td>${user.firstName}</td>
-        <td>${user.lastName}</td>
-        <td>${user.email}</td>
-        <td>${user.userRole}</td>
-        <td>${user.userStatus}</td>
-        <td>${user.password}</td>
-        <td align="center">
-            <security:authorize access="hasRole('ROLE_ADMIN')">
-                <a href="/user/findUserById?id=${user.id}">
-                    <button>Details</button>
-                </a>
-            </security:authorize>
-        </td>
-        <td align="center">
-            <security:authorize access="hasRole('ROLE_ADMIN')">
-                <a href="/user/form/update?id=${user.id}">
-                    <button>Update</button>
-                </a>
-            </security:authorize>
-        </td>
-    </tr>
-</c:forEach>
-</tbody>
 </table>
 </body>
 </html>

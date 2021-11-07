@@ -33,7 +33,7 @@
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/manufacturer/form/update?id=${manufacturer.id}">
+                    <a href="/manufacturer/form/update?id=${manufacturer.get().id}">
                         <button>Update</button>
                     </a>
                 </security:authorize>

@@ -37,14 +37,14 @@
             <td>${user.get().password}</td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/user/delete?id=${user.id}">
+                    <a href="/user/delete?id=${user.get().id}">
                         <button>Delete</button>
                     </a>
                 </security:authorize>
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/user/form/update?id=${user.id}">
+                    <a href="/user/form/update?id=${user.get().id}">
                         <button>Update</button>
                     </a>
                 </security:authorize>
