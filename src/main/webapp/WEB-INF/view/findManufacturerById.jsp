@@ -40,7 +40,7 @@
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/manufacturer/delete?id=${manufacturer.id}">
+                    <a href="/manufacturer/delete?id=${manufacturer.get().id}">
                         <button>Delete</button>
                     </a>
                 </security:authorize>

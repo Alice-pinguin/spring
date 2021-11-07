@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping("registration")
     public String registrationUser(@Valid User user, BindingResult result) {
         userService.register(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

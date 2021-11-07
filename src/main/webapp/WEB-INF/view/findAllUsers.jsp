@@ -38,14 +38,14 @@
             <td>${user.password}</td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/user/findUserById?id=${user.get().id}">
+                    <a href="/user/findUserById?id=${user.id}">
                         <button>Details</button>
                     </a>
                 </security:authorize>
             </td>
             <td align="center">
                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/user/form/update?id=${user.get().id}">
+                    <a href="/user/form/update?id=${user.id}">
                         <button>Update</button>
                     </a>
                 </security:authorize>

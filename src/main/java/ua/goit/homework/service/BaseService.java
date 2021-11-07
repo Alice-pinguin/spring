@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import ua.goit.homework.entity.BaseEntity;
+import ua.goit.homework.entity.Product;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,8 +22,8 @@ public abstract class BaseService<E extends BaseEntity<ID>, ID>  {
         return repository.save(entity);
     }
 
-    public Iterable<E> findAll() {
-        return repository.findAll();
+    public List<E> findAll() {
+        return (List<E>) repository.findAll();
     }
 
     public Optional<E> findById(ID id) {

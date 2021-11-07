@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ua.goit.homework.entity.Manufacturer;
 import ua.goit.homework.service.ManufacturerService;
-
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @RequiredArgsConstructor
 @Controller
@@ -22,7 +22,7 @@ public class ManufacturerController {
 
     @GetMapping(path = "/findAllManufacturers")
     public ModelAndView showAllManufacturersPage(ModelAndView model) {
-        Iterable<Manufacturer> manufacturers = service.findAll();
+        List<Manufacturer> manufacturers = service.findAll();
         model.addObject("manufacturers", manufacturers);
         model.setViewName("findAllManufacturers");
         return model;

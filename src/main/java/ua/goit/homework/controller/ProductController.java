@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import ua.goit.homework.dto.ManufacturerDto;
 import ua.goit.homework.entity.Manufacturer;
 import ua.goit.homework.entity.Product;
 import ua.goit.homework.service.ManufacturerService;
@@ -25,12 +26,12 @@ public class ProductController {
     
     @GetMapping(path = "/findProductByManufacturerId")
     public ModelAndView showProductsByManufacturerIdPage(@RequestParam(name = "id") Long id, ModelAndView model) {
-        Optional<Product> product = service.findById(id);
-        Long manufacturerDTO = product.get().getManufacturer().getId();
-        Optional<Manufacturer> manufacturer = manufacturerService.findById(manufacturerDTO);
-        model.addObject("products", product);
-        model.addObject("manufacturer", manufacturerDTO);
-        model.setViewName("findProductsByManufacturerId");
+        Optional<Product> product = service.findById (id);
+        Long manufacturerDTO = product.get ().getManufacturer ().getId ();
+        Optional<Manufacturer> manufacturer  = manufacturerService.findById (manufacturerDTO);
+        model.addObject ("products", product);
+        model.addObject ("manufacturer", manufacturerDTO);
+        model.setViewName ("findProductsByManufacturerId");
         return model;
     }
 
@@ -44,7 +45,7 @@ public class ProductController {
 
     @GetMapping(path = "/findAllProducts")
     public ModelAndView showFindAllProductsPage(ModelAndView model) {
-        List<Product> products = (List<Product>) service.findAll();
+        List<Product> products = service.findAll();
         model.addObject("products", products);
         model.setViewName("findAllProduct");
         return model;
