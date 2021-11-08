@@ -70,6 +70,12 @@ public class UserController {
         userService.save(user);
         return new RedirectView("/user/findAllUsers");
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping(path = "/update")
+    public RedirectView updateUser(@ModelAttribute("userForm") User user) {
+        userService.save (user);
+        return new RedirectView ("/user/findAllUsers");
+    }
 
     @ModelAttribute("userForm")
     public User defaultUser() {

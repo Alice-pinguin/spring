@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import ua.goit.homework.dto.ManufacturerDto;
 import ua.goit.homework.entity.Manufacturer;
 import ua.goit.homework.entity.Product;
 import ua.goit.homework.service.ManufacturerService;

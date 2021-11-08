@@ -15,34 +15,33 @@
                 <h2>Product</h2>
             </caption>
             <thead>
-                <tr>
-                    <th align="left">Product name</th>
-                    <th align="left">Product price</th>
-                    <th align="left">Manufacturer name</th>
-                    <th colspan="2" align="center">Actions</th>
-                </tr>
+            <tr>
+                <th align="left">Product name</th>
+                <th align="left">Product price</th>
+                <th colspan="2" align="center">Actions</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                <tr>
-                    <td>${product.get().name}</td>
-                    <td>${product.get().price}</td>
-                    <td>${product.get().manufacturer}</td>
-                    <td align="center">
-                        <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="/product/form/update?id=${product.id}">
-                                <button>Update</button>
-                            </a>
-                        </security:authorize>
-                    </td>
-                    <td align="center">
-                        <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="/product/delete?id=${product.id}">
-                                <button>Delete</button>
-                            </a>
-                        </security:authorize>
-                    </td>
-                </tr>
+            <tr>
+            <tr>
+                <td>${product.get().name}</td>
+                <td>${product.get().price}</td>
+                <td>${product.get().manufacturer}</td>
+                <td align="center">
+                    <security:authorize access="hasRole('ROLE_ADMIN')">
+                        <a href="/product/form/update?id=${product.get().id}">
+                            <button>Update</button>
+                        </a>
+                    </security:authorize>
+                </td>
+                <td align="center">
+                    <security:authorize access="hasRole('ROLE_ADMIN')">
+                        <a href="/product/delete?id=${product.get().id}">
+                            <button>Delete</button>
+                        </a>
+                    </security:authorize>
+                </td>
+            </tr>
             </tbody>
         </table>
     </body>

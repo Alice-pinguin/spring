@@ -12,40 +12,32 @@
 <c:import url="/WEB-INF/view/navigation.jsp"/>
 <table cellpadding="5">
     <caption>
-        <h2> Manufacturer detail </h2>
+        <h2> Manufacturer </h2>
     </caption>
     <thead>
     <tr>
         <th align="left">Manufacturer name</th>
-        <th align="left">Product name</th>
         <th colspan="2" align="center">Actions</th>
     </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>${manufacturer.name}</td>
-            <td>
-                <ul>
-                    <c:forEach var="product" items="${manufacturer.products}">
-                        <li>${product.name}</li>
-                    </c:forEach>
-                </ul>
-            </td>
-            <td align="center">
-                <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/manufacturer/form/update?id=${manufacturer.id}">
-                        <button>Update</button>
-                    </a>
-                </security:authorize>
-            </td>
-            <td align="center">
-                <security:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/manufacturer/delete?id=${manufacturer.id}">
-                        <button>Delete</button>
-                    </a>
-                </security:authorize>
-            </td>
-        </tr>
+    <tr>
+        <td>${manufacturer.name}</td>
+        <td align="center">
+            <security:authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/manufacturer/form/update?id=${manufacturer.id}">
+                    <button>Update</button>
+                </a>
+            </security:authorize>
+        </td>
+        <td align="center">
+            <security:authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/manufacturer/delete?id=${manufacturer.id}">
+                    <button>Delete</button>
+                </a>
+            </security:authorize>
+        </td>
+    </tr>
     </tbody>
 </table>
 </body>
