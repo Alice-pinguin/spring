@@ -1,6 +1,5 @@
 package ua.goit.homework.autorization;
 
-import java.io.Serial;
 import java.util.Collection;
 import java.util.Collections;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("user with username %s not exists", email)));
         return new UserDetails() {
 
-            @Serial
+
             private static final long serialVersionUID = -738565735037431772L;
 
             @Override
